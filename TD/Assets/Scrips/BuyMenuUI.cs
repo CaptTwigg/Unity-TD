@@ -65,9 +65,10 @@ public class BuyMenuUI : MonoBehaviour
         if (node != null && WorldStats.gold >= tower.price && node.tower == null)
         {
             WorldStats.gold -= tower.price;
-            node.tower = tower.Tower;
             var towerInst = Instantiate(tower.Tower, node.transform.position, Quaternion.identity);
+            node.tower = towerInst;
             towerInst.transform.parent = GameObject.Find("Towers").transform;
+            show = false;
         }
     }
     [System.Serializable]

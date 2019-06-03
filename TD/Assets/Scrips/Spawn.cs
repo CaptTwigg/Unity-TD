@@ -8,7 +8,6 @@ public class Spawn : MonoBehaviour
 {
     public GameObject enermy;
     public float spawnTimer = 2f;
-    public float waveWait = 1f;
     public int enermiesPerWave = 10;
 
 
@@ -18,11 +17,11 @@ public class Spawn : MonoBehaviour
         WaitForSeconds wait = new WaitForSeconds(spawnTimer);
         for (int i = 0; i < enermiesPerWave; i++)
         {
-            yield return wait;
+            
             GameObject childObject = Instantiate(enermy, gameObject.transform.position, Quaternion.identity);
             childObject.transform.parent = GameObject.Find("Enermies").transform;
+            yield return wait;
         }
-        yield return new WaitForSeconds(waveWait);
 
     }
     public void nextWave()

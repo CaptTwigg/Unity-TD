@@ -58,6 +58,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -98,6 +99,7 @@ MonoBehaviour:
   gold: 10
   healthBar: {fileID: 4383065616728029544, guid: 84edaf1c5d5e2ac408087ebe8af48cbc,
     type: 3}
+  armor: 0
 --- !u!1001 &7722883633574458586
 PrefabInstance:
   m_ObjectHideFlags: 0

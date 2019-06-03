@@ -1,35 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 
 public class Node : MonoBehaviour
 {
-   public GameObject tower;
+    public GameObject tower;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-     
-
-    }
     private void OnMouseDown()
     {
-        
-        //Instantiate(tower, transform.position, Quaternion.identity);
-        if (BuyMenuUI.show)
-            BuyMenuUI.show = false;
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            Debug.Log("Clicked on the UI");
+        }
+        else
+        {
+            //Instantiate(tower, transform.position, Quaternion.identity);
+            if ((BuyMenuUI.show || UpgradeMenuUI.show))
+            {
+                BuyMenuUI.show = false;
+                UpgradeMenuUI.show = false;
+            }
+            else
+            {
+                if (tower == null)
+                {
+                    BuyMenuUI.show = true;
+                    BuyMenuUI.node = this;
+                }
+                else
+                {
+                    UpgradeMenuUI.show = true;
+                    UpgradeMenuUI.node = this;
+                }
 
-        else { 
-            BuyMenuUI.show = true;
-            BuyMenuUI.node = this;
+            }
         }
     }
 }

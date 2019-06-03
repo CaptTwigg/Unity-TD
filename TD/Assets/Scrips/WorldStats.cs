@@ -21,4 +21,11 @@ public class WorldStats : MonoBehaviour
         levelText.text = "Level: " + level;
     }
 
+    public static void reset()
+    {
+        HP = 10;
+        gold = 300;
+        level = 1;
+    }
+
 }

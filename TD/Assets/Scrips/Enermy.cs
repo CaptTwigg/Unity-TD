@@ -9,6 +9,8 @@ public class Enermy : MonoBehaviour
     public int hp = 100;
     public int gold = 10;
     public GameObject healthBar;
+    [Range(0,1)]
+    public float armor = 0;
     private Transform target;
     private int wavePointIndex = 0;
 

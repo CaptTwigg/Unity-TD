@@ -28,11 +28,11 @@ public class Bullet : MonoBehaviour
 
         if (Vector3.Distance(target.transform.position, transform.position) < 100f)
         {
-            target.hp -= damage;
+            target.hp -= damage - (int)(damage * target.armor);
             Destroy(gameObject);
         }
 
-        transform.Translate(dir.normalized * bulletSpeed, Space.World);
+        transform.Translate(dir.normalized * bulletSpeed);
 
     }
 

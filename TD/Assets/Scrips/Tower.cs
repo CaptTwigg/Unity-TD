@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Tower : MonoBehaviour
 {
-    
 
-   [Header("Attributes")]
+
+    [Header("Attributes")]
     public float range = 400;
-    public  int damage = 10;
+    public int damage = 10;
     public float fireRate = 1;
     private float firecountdown = 0;
 
@@ -16,6 +15,7 @@ public class Tower : MonoBehaviour
     public GameObject bullet;
     public Enermy target;
     public string enermytag = "Enermy";
+
     // Use this for initialization
     void Start()
     {
@@ -25,7 +25,7 @@ public class Tower : MonoBehaviour
     void updateTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enermytag);
-        foreach ( GameObject enermy in enemies)
+        foreach (GameObject enermy in enemies)
         {
             float distanceToTarget = Vector3.Distance(transform.position, enermy.transform.position);
             if (distanceToTarget < range)
@@ -45,11 +45,12 @@ public class Tower : MonoBehaviour
     {
         trackTarget();
 
-        
+
     }
 
     private void OnDrawGizmosSelected()
     {
+        // Tower range
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
@@ -76,12 +77,17 @@ public class Tower : MonoBehaviour
     {
         GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
         Bullet bulletCom = newBullet.GetComponent<Bullet>();
-        newBullet.transform.parent = gameObject.transform;
+        newBullet.transform.parent = GameObject.Find("Bullets").transform;
         if (bulletCom != null)
         {
             bulletCom.setTarget(target);
             bulletCom.setDamage(damage);
         }
-      
+
     }
+
+    public int damageUpgrade { get; set; }
+    public int firerateUpgrade { get; set; }
+    public int rangeUpgrade { get; set; }
+
 }
