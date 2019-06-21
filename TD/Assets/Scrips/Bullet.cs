@@ -6,9 +6,9 @@ public class Bullet : MonoBehaviour
 {
     // Start is called before the first frame update
     Enermy target;
-    public float bulletSpeed = 10f;
+    public float bulletSpeed = 1200f;
     private int damage;
-    
+
     void Start()
     {
     }
@@ -23,16 +23,14 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        Vector3 dir = target.transform.position - transform.position;
-        float distanceThisFrame = bulletSpeed * Time.deltaTime;
-
         if (Vector3.Distance(target.transform.position, transform.position) < 100f)
         {
             target.hp -= damage - (int)(damage * target.armor);
             Destroy(gameObject);
         }
 
-        transform.Translate(dir.normalized * bulletSpeed);
+        Vector3 dir = target.transform.position - transform.position;
+        transform.Translate(dir.normalized * bulletSpeed * Time.deltaTime);
 
     }
 

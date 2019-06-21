@@ -19,7 +19,7 @@ public class Tower : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        InvokeRepeating("updateTarget", 0f, 0.5f);
+        InvokeRepeating("updateTarget", 0f, 0.2f);
     }
 
     void updateTarget()
@@ -44,8 +44,6 @@ public class Tower : MonoBehaviour
     void Update()
     {
         trackTarget();
-
-
     }
 
     private void OnDrawGizmosSelected()

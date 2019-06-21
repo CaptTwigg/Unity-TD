@@ -29,7 +29,7 @@ public class Enermy : MonoBehaviour
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
         //Debug.Log(Vector3.Distance(target.position, transform.position));
-        if (Vector3.Distance(target.position, transform.position) < 4f)
+        if (Vector3.Distance(target.position, transform.position) < 6f)
         {
             if (wavePointIndex == Waypoints.points.Length-1)
             {

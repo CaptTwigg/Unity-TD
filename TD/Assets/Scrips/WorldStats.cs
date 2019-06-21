@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WorldStats : MonoBehaviour
@@ -12,6 +13,8 @@ public class WorldStats : MonoBehaviour
     public Text hptext;
     public Text goldText;
     public Text levelText;
+
+    public GameObject pauseUI;
 
 
     private void Update()
@@ -26,6 +29,29 @@ public class WorldStats : MonoBehaviour
         HP = 10;
         gold = 300;
         level = 1;
+    }
+
+    public void pauseGame()
+    {
+        Time.timeScale = 0f;
+        pauseUI.SetActive(true);
+
+    }
+    public void resumeGame()
+    {
+        Time.timeScale = 1f;
+        pauseUI.SetActive(false);
+    }
+
+    public void goToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void exitGame()
+    {
+        Application.Quit();
     }
 
 }
